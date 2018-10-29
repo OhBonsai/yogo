@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"net"
 	"github.com/gorilla/mux"
-	"github.com/gorilla/handlers"
 	"github.com/OhBonsai/yogo/store"
 	"github.com/pkg/errors"
 	"github.com/OhBonsai/yogo/mlog"
@@ -14,6 +13,7 @@ import (
 	"strings"
 	"time"
 	"os"
+	"github.com/gorilla/handlers"
 )
 
 var allowedMethods = []string{
@@ -70,7 +70,8 @@ func (a *App) StartServer() error{
 
 	var handler http.Handler = &CorsWrapper{a.Config, a.Srv.Router}
 	a.Srv.Server = &http.Server{
-		Handler: handlers.RecoveryHandler(handlers.RecoveryLogger(&RecoveryLogger{}), handlers.PrintRecoveryStack(true))(handler),
+		Handler:      handlers.RecoveryHandler(handlers.RecoveryLogger(&RecoveryLogger{}), handlers.PrintRecoveryStack(true))(handler),
+		//Handler:      handler,
 		ReadTimeout:  time.Duration(300) * time.Second,
 		WriteTimeout: time.Duration(300) * time.Second,
 		ErrorLog:     a.Log.StdLog(mlog.String("source", "httpserver")),

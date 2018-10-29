@@ -31,8 +31,8 @@ func Init(a *app.App, root *mux.Router) *API {
 	api.BaseRoutes.Root = root
 	api.BaseRoutes.ApiRoot = root.PathPrefix(model.API_URL_SUFFIX).Subrouter()
 
-	api.BaseRoutes.Plans = api.BaseRoutes.ApiRoot.PathPrefix("/posts").Subrouter()
-	api.BaseRoutes.Plan = api.BaseRoutes.ApiRoot.PathPrefix("/post/{post_id:[A-zA-Z0-9]+}").Subrouter()
+	api.BaseRoutes.Plans = api.BaseRoutes.ApiRoot.PathPrefix("/plans").Subrouter()
+	api.BaseRoutes.Plan = api.BaseRoutes.ApiRoot.PathPrefix("/plan/{plan_id:[A-zA-Z0-9]+}").Subrouter()
 
 	api.InitPlan()
 

@@ -38,7 +38,6 @@ func IsApiCall(r *http.Request) bool {
 }
 
 
-
 func ReturnStatusOK(w http.ResponseWriter) {
 	m := make(map[string]string)
 	m[model.STATUS] = model.STATUS_OK

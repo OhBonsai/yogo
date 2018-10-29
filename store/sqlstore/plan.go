@@ -44,6 +44,7 @@ func NewSqlPlanStore(sqlStore SqlStore) store.PlanStore {
 	}
 
 	for _, db := range sqlStore.GetAllConns() {
+		// 这里通过反射会拿到所有字段
 		table := db.AddTableWithName(model.Plan{}, "Plans").SetKeys(false, "Id")
 		table.ColMap("Id").SetMaxSize(26)
 		table.ColMap("Name").SetMaxSize(model.PLAN_NAME_MAX_BYTES_V1)

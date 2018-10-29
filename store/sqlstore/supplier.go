@@ -90,6 +90,7 @@ func NewSqlSupplier(settings model.SqlSettings) *SqlSupplier {
 	supplier.initConnection()
 	supplier.oldStores.plan = NewSqlPlanStore(supplier)
 
+    // If table not exist, create Table...
 	err := supplier.GetMaster().CreateTablesIfNotExists()
 	if err != nil {
 		mlog.Critical(fmt.Sprintf("Error creating database tables: %v", err))
