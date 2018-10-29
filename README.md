@@ -1,2 +1,5 @@
-# yogowf
-硬核后端，没有依赖
+# yogo
+
+没有依赖的硬核golang生产级别WEB服务
+
+
