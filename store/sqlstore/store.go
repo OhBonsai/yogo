@@ -3,7 +3,7 @@ package sqlstore
 import (
 	_ "github.com/lib/pq"
 	"github.com/mattermost/gorp"
-	"healer/store"
+	"github.com/OhBonsai/yogo/store"
 )
 
 

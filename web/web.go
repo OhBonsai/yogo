@@ -3,10 +3,10 @@ package web
 import (
 	"strings"
 	"net/http"
-	"healer/model"
-	"healer/mlog"
-	"healer/utils"
-	"healer/app"
+	"github.com/OhBonsai/yogo/model"
+	"github.com/OhBonsai/yogo/mlog"
+	"github.com/OhBonsai/yogo/utils"
+	"github.com/OhBonsai/yogo/app"
 	"fmt"
 	"github.com/gorilla/mux"
 )

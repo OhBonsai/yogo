@@ -3,10 +3,10 @@ package web
 import (
 	"net/http"
 	"fmt"
-	"healer/app"
-	"healer/mlog"
-	"healer/model"
-	"healer/utils"
+	"github.com/OhBonsai/yogo/app"
+	"github.com/OhBonsai/yogo/mlog"
+	"github.com/OhBonsai/yogo/model"
+	"github.com/OhBonsai/yogo/utils"
 )
 
 type Handler struct {

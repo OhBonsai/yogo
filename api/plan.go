@@ -1,7 +1,7 @@
 package api
 
 import (
-	"healer/model"
+	"github.com/OhBonsai/yogo/model"
 	"net/http"
 )
 

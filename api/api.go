@@ -1,10 +1,10 @@
 package api
 
 import (
-	"healer/app"
-	"healer/web"
+	"github.com/OhBonsai/yogo/app"
+	"github.com/OhBonsai/yogo/web"
 	"github.com/gorilla/mux"
-	"healer/model"
+	"github.com/OhBonsai/yogo/model"
 	"net/http"
 )
 

@@ -3,9 +3,9 @@ package sqlstore
 import (
 	"net/http"
 
-	"healer/model"
-	"healer/utils"
-	"healer/store"
+	"github.com/OhBonsai/yogo/model"
+	"github.com/OhBonsai/yogo/utils"
+	"github.com/OhBonsai/yogo/store"
 	"sync"
 )
 

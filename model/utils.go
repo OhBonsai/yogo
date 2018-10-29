@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/base32"
-	"healer/utils"
+	"github.com/OhBonsai/yogo/utils"
 	"github.com/pborman/uuid"
 	"time"
 	"encoding/json"

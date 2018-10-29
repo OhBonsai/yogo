@@ -1,7 +1,7 @@
 package store
 
 import (
-	"healer/model"
+	"github.com/OhBonsai/yogo/model"
 )
 
 

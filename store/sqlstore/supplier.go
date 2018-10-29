@@ -19,10 +19,10 @@ import (
 	"github.com/lib/pq"
 	"github.com/mattermost/gorp"
 
-	"healer/mlog"
-	"healer/model"
-	"healer/store"
-	"healer/utils"
+	"github.com/OhBonsai/yogo/mlog"
+	"github.com/OhBonsai/yogo/model"
+	"github.com/OhBonsai/yogo/store"
+	"github.com/OhBonsai/yogo/utils"
 )
 
 const (

@@ -1,10 +1,10 @@
 package web
 
 import (
-	"healer/app"
-	"healer/mlog"
-	"healer/model"
-	"healer/utils"
+	"github.com/OhBonsai/yogo/app"
+	"github.com/OhBonsai/yogo/mlog"
+	"github.com/OhBonsai/yogo/model"
+	"github.com/OhBonsai/yogo/utils"
 
 	"net/http"
 )

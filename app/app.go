@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"sync/atomic"
 
-	"healer/mlog"
-	"healer/store"
-	"healer/store/sqlstore"
-	"healer/model"
-	"healer/utils"
+	"github.com/OhBonsai/yogo/mlog"
+	"github.com/OhBonsai/yogo/store"
+	"github.com/OhBonsai/yogo/store/sqlstore"
+	"github.com/OhBonsai/yogo/model"
+	"github.com/OhBonsai/yogo/utils"
 	"github.com/gorilla/mux"
 )
 

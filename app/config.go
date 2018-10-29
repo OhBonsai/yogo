@@ -1,7 +1,7 @@
 package app
 
 import (
-	"healer/model"
+	"github.com/OhBonsai/yogo/model"
 )
 
 func (a *App) Config() *model.Config {

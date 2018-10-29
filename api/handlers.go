@@ -1,7 +1,7 @@
 package api
 
 import (
-	"healer/web"
+	"github.com/OhBonsai/yogo/web"
 	"net/http"
 )
 
