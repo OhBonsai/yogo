@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/base32"
-	"github.com/OhBonsai/yogo/utils"
 	"github.com/pborman/uuid"
+	goi18n "github.com/nicksnyder/go-i18n/i18n"
 	"time"
 	"encoding/json"
 )
@@ -29,6 +29,9 @@ type StringInterface map[string]interface{}
 type StringMap map[string]string
 type StringArray []string
 
+func (er *AppError) Error() string {
+	return er.Where + ": " + er.Message + ", " + er.DetailedError
+}
 
 // change string interface to string json
 func StringInterfaceToJson(objmap map[string]interface{}) string {
@@ -61,7 +64,7 @@ func NewAppError(where string, id string, params map[string]interface{}, details
 	return ap
 }
 
-func (er *AppError) SystemMessage(T utils.TranslateFunc) string {
+func (er *AppError) SystemMessage(T goi18n.TranslateFunc) string {
 	if er.params == nil {
 		return T(er.Id)
 	} else {
@@ -108,7 +111,7 @@ func CopyStringMap(originalMap map[string]string) map[string]string {
 }
 
 
-func (er *AppError) Translate(T utils.TranslateFunc) {
+func (er *AppError) Translate(T goi18n.TranslateFunc) {
 	if T == nil {
 		er.Message = er.Id
 		return

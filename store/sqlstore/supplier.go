@@ -69,7 +69,6 @@ type SqlSupplierOldStores struct {
 
 type SqlSupplier struct {
 	// rrCounter and srCounter should be kept first.
-	// See https://healer/pull/7281
 	rrCounter      int64
 	srCounter      int64
 	next           store.LayeredStoreSupplier

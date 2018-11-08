@@ -1,0 +1,32 @@
+{
+  "ServiceSettings": {
+    "SiteURL": "",
+    "ListenAddress": ":8001"
+  },
+  "SqlSettings": {
+    "DriverName": "postgres",
+    "DataSource": "postgres://bonsai:123456@127.0.0.1:54321/bonsai?sslmode=disable",
+    "DataSourceReplicas": [],
+    "DataSourceSearchReplicas": [],
+    "MaxIdleConns": 20,
+    "MaxOpenConns": 300,
+    "Trace": false,
+    "AtRestEncryptKey": "",
+    "QueryTimeout": 30
+  },
+  "LogSettings": {
+    "EnableConsole": true,
+    "ConsoleLevel": "DEBUG",
+    "ConsoleJson": false,
+    "EnableFile": false,
+    "FileLevel": "INFO",
+    "FileJson": false,
+    "FileLocation": "",
+    "EnableWebhookDebugging": true,
+    "EnableDiagnostics": true
+  },
+  "JobSettings": {
+    "RunJobs": true,
+    "RunScheduler": true
+  }
+}

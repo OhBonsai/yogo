@@ -17,26 +17,32 @@ type App struct {
 	Srv *Server
 	Log *mlog.Logger
 	newStore func() store.Store
+
 	config          atomic.Value
+	envConfig       map[string]interface{}
+	configFile      string
 }
 
-func New() (outApp *App, outErr error) {
+func New(configFileLocation string) (outApp *App, outErr error) {
 	app := &App {
 		Srv: &Server{
 			Router: mux.NewRouter(),
 		},
+		configFile: configFileLocation,
+	}
+
+
+	if err := app.LoadConfig(app.configFile); err != nil {
+		return nil, err
 	}
 
 	// Initalize logging
-	app.Log = mlog.NewLogger(&mlog.LoggerConfiguration{
-		EnableConsole:true,
-	})
-
+	app.Log = mlog.NewLogger(utils.MloggerConfigFromLoggerConfig(&app.Config().LogSettings))
 	// Redirect default golang logger to this logger
 	mlog.RedirectStdLog(app.Log)
-
 	// Use this app logger as the global logger (eventually remove all instances of global logging)
 	mlog.InitGlobalLogger(app.Log)
+
 
 	mlog.Info("Server is initializing...")
 

@@ -7,6 +7,8 @@ import (
 	"github.com/OhBonsai/yogo/utils"
 
 	"net/http"
+
+	goi18n "github.com/nicksnyder/go-i18n/i18n"
 )
 
 type Context struct {
@@ -15,7 +17,7 @@ type Context struct {
 	Session model.Session
 	Params        *Params
 	Err           *model.AppError
-	T             utils.TranslateFunc
+	T             goi18n.TranslateFunc
 	RequestId     string
 	IpAddress     string
 	Path          string
@@ -59,8 +61,6 @@ func (c *Context) LogDebug(err *model.AppError) {
 		mlog.String("err_details", err.DetailedError),
 	)
 }
-
-
 
 func NewInvalidParamError(parameter string) *model.AppError {
 	err := model.NewAppError("Context", "api.context.invalid_body_param.app_error", map[string]interface{}{"Name": parameter}, "", http.StatusBadRequest)

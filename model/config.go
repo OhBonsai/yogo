@@ -5,8 +5,44 @@ const (
 	DATABASE_DRIVER_MYSQL    = "mysql"
 	DATABASE_DRIVER_POSTGRES = "postgres"
 
-	SQL_SETTINGS_DEFAULT_DATA_SOURCE = "postgres://healer:123456@10.202.81.128:54321/healer?sslmode=disable"
+	SQL_SETTINGS_DEFAULT_DATA_SOURCE = "postgres://bonsai:123456@127.0.0.1:54321/bonsai?sslmode=disable"
+	SERVICE_SETTINGS_DEFAULT_SITE_URL           = ""
+	SERVICE_SETTINGS_DEFAULT_LISTEN_AND_ADDRESS = ":8080"
 )
+
+type Config struct {
+	ServiceSettings ServiceSettings
+	SqlSettings SqlSettings
+	LogSettings LogSettings
+	JobSettings JobSettings
+}
+
+func (c *Config) SetDefaults() {
+	c.SqlSettings.SetDefaults()
+	c.SqlSettings.SetDefaults()
+	c.LogSettings.SetDefaults()
+	c.JobSettings.SetDefaults()
+}
+
+func (c *Config) IsValid() *AppError{
+	return nil
+}
+
+type ServiceSettings struct {
+	SiteURL                                           *string
+	ListenAddress                                     *string
+}
+
+func (s *ServiceSettings) SetDefaults() {
+	if s.SiteURL == nil {
+		s.SiteURL = NewString(SERVICE_SETTINGS_DEFAULT_SITE_URL)
+	}
+
+	if s.ListenAddress == nil {
+		s.ListenAddress = NewString(SERVICE_SETTINGS_DEFAULT_LISTEN_AND_ADDRESS)
+	}
+
+}
 
 
 type SqlSettings struct {
@@ -20,7 +56,6 @@ type SqlSettings struct {
 	AtRestEncryptKey         string
 	QueryTimeout             *int
 }
-
 
 func (s *SqlSettings) SetDefaults() *SqlSettings{
 	if s.DriverName == nil {
@@ -50,11 +85,51 @@ func (s *SqlSettings) SetDefaults() *SqlSettings{
 	return s
 }
 
+type LogSettings struct {
+	EnableConsole          bool
+	ConsoleLevel           string
+	ConsoleJson            *bool
+	EnableFile             bool
+	FileLevel              string
+	FileJson               *bool
+	FileLocation           string
+	EnableWebhookDebugging bool
+	EnableDiagnostics      *bool
+}
+
+func (s *LogSettings) SetDefaults() {
+	if s.EnableDiagnostics == nil {
+		s.EnableDiagnostics = NewBool(true)
+	}
+
+	if s.ConsoleJson == nil {
+		s.ConsoleJson = NewBool(true)
+	}
+
+	if s.FileJson == nil {
+		s.FileJson = NewBool(true)
+	}
+}
+
+type JobSettings struct {
+	RunJobs      *bool
+	RunScheduler *bool
+}
+
+func (s *JobSettings) SetDefaults() {
+	if s.RunJobs == nil {
+		s.RunJobs = NewBool(true)
+	}
+
+	if s.RunScheduler == nil {
+		s.RunScheduler = NewBool(true)
+	}
+}
+
+
 type ConfigFunc func() *Config
 
 
-type Config struct {
-	SqlSettings SqlSettings
-}
+
 
 

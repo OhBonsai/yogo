@@ -77,7 +77,7 @@ func (a *App) StartServer() error{
 		ErrorLog:     a.Log.StdLog(mlog.String("source", "httpserver")),
 	}
 
-	listener, err := net.Listen("tcp", ":8080")
+	listener, err := net.Listen("tcp", *a.Config().ServiceSettings.ListenAddress)
 	if err != nil {
 		errors.Wrapf(err, utils.T("api.server.start_server.starting.critical"), err)
 		return err

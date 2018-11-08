@@ -6,9 +6,11 @@ import (
 )
 
 func main() {
-	a, err := app.New()
+	configFileLocation := "./config/default.json"
+	a, err := app.New(configFileLocation)
 
 	if err != nil{
+		print(err.Error())
 		panic(err)
 	}
 
@@ -16,6 +18,7 @@ func main() {
 	serverErr := a.StartServer()
 
 	if serverErr != nil {
+		print(serverErr.Error())
 		panic(err)
 	}
 }
